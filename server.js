@@ -17,7 +17,7 @@ var db = require('./config/db');
  require('./config/passport')(passport); // pass passport for configuration
 
 mongoose.connect(db.url);
-var port = 8003; // set our port
+var port = 3000; // set our port
 app.use(cookieParser()); // read cookies (needed for auth)
 // get all data/stuff of the body (POST) parameters
 app.use(bodyParser.json()); // parse application/json 
