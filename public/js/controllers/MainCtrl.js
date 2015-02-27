@@ -2,6 +2,8 @@ angular.module('MainCtrl', ['ngCookies']).controller('MainController', ['$scope'
 
     $scope.tagline = 'MEAN Stack Client Side Bypass Demo';
 
+    $scope.isLoggedin = false;
+
     $rootScope.$on('$viewContentLoaded', function () {
         $scope.getAdmin();
     });
@@ -10,7 +12,7 @@ angular.module('MainCtrl', ['ngCookies']).controller('MainController', ['$scope'
         console.log("Successfully Logged Out");
         $cookieStore.remove('id');
         $scope.getAdmin();
-
+        $scope.isLoggedin = false;
         $location.path('/');
 
     };
@@ -47,6 +49,7 @@ angular.module('MainCtrl', ['ngCookies']).controller('MainController', ['$scope'
             $http.post("/api/getUser", {'id': $cookieStore.get('id')})
                 .success(function (data) {
                     $scope.currentUser = data.name;
+                    $scope.isLoggedin = treu;
                 })
                 .error(function (data) {
                     console.log('Something Went Wrong ' + data);
@@ -63,6 +66,7 @@ angular.module('MainCtrl', ['ngCookies']).controller('MainController', ['$scope'
             $http.post("/api/getUser", {'id': $cookieStore.get('id')})
                 .success(function (data) {
                     console.log(data);
+                    $scope.isLoggedin = true;
                     $scope.isAdmin = (data.role == "admin");
                 })
                 .error(function (data) {
