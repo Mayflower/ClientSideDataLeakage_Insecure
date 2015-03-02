@@ -1,3 +1,13 @@
-// public/js/app.js
-angular.module('App', ['ngRoute', 'MainCtrl', 'appRoutes', 'RegisterCtrl', 'LoginCtrl', 'ngCookies', 'ngSanitize']);
+angular.module(
+    'App',
+    [
+        'ngRoute',
+        'MainCtrl',
+        'appRoutes',
+        'RegisterCtrl',
+        'LoginCtrl',
+        'ngCookies',
+        'ngSanitize',
+        'textAngular'
+    ]);
 

@@ -8,6 +8,13 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
             templateUrl: 'views/home.html',
             controller: 'MainController'
         })
+
+        // edit home page
+        .when('/home-edit', {
+            templateUrl: 'views/home-edit.html',
+            controller: 'MainController'
+        })
+
         // login page
         .when('/login', {
             templateUrl: 'views/login.html',

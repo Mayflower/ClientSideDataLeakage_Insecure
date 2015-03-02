@@ -38,7 +38,7 @@ angular.module('MainCtrl', ['ngCookies']).controller('MainController', ['$scope'
 
         }
 
-    }
+    };
 
 
     $scope.getUser = function () {
@@ -77,5 +77,26 @@ angular.module('MainCtrl', ['ngCookies']).controller('MainController', ['$scope'
         }
 
     };
+
+    $scope.updateMainContent = function () {
+        $http.post("/api/updateContent", {'htmlContent': $scope.htmlContent})
+            .success(function (data) {
+                debugger;
+            })
+            .error(function (data) {
+                debugger;
+            });
+    };
+
+    $scope.getMainContent = function () {
+        $http.post("/api/getContent", {'page': 'home'})
+            .success(function (data) {
+                debugger;
+            })
+            .error(function (data) {
+                debugger;
+            });
+    };
+    $scope.getMainContent();
 
 }]);
