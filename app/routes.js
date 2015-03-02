@@ -1,5 +1,4 @@
 // app/routes.js
-var bcrypt = require('bcrypt-nodejs');
 var User = require('../config/models/UserModel.js');
 
 module.exports = function (app, passport) {
@@ -20,8 +19,6 @@ module.exports = function (app, passport) {
         } else {
             throw new Error("User Not Authenticated");
         }
-
-
     });
 
     app.post('/api/getUser', function (req, res) {
