@@ -54,5 +54,13 @@ module.exports = function (app, passport) {
         res.sendfile('./public/views/index.html'); // load our public/index.html file
     });
 
-
-}
+    // Handle 500
+    app.use(function(error, req, res, next) {
+        console.error(error);
+        if (ISLOCALHOST()) {
+            res.json(error, 500);
+        } else {
+            res.send('500: Internal Server Error', 500);
+        }
+    });
+};
