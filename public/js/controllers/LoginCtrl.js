@@ -10,14 +10,11 @@ angular.module('LoginCtrl', ['ngCookies']).controller('LoginController', ['$scop
                 $scope.loginData = {};
                 $scope.$emit('login', data);
                 $location.path('/');
-
             })
             .error(function (data) {
                 console.log("Something Went Wrong, Could not login user.");
                 $scope.loginData = {};
                 $location.path('/');
-
             });
-    }
-
+    };
 }]);

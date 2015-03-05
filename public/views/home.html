@@ -1,9 +1,6 @@
 <!-- public/home.html -->
 <a href="/home-edit" ng-if="isAdmin" class="btn btn-primary pull-right">Edit Content</a>
 <div class="jumbotron text-center">
-    {{ htmlContent }}
-    <h1>Home Page</h1>
-
-    <p>{{ tagline }}</p>
+    <span ng-bind-html="model.htmlContent"></span>
 </div>
 

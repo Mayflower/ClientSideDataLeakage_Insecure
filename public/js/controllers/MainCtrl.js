@@ -1,8 +1,10 @@
 angular.module('MainCtrl', ['ngCookies']).controller('MainController', ['$scope', '$http', '$cookieStore', '$location', '$route', '$rootScope', function ($scope, $http, $cookieStore, $location, $route, $rootScope) {
 
-    $scope.tagline = 'MEAN Stack Client Side Bypass Demo';
-
     $scope.isLoggedin = false;
+
+    $scope.model = {
+        htmlContent: window.htmlContent || '<h1>Home Page</h1><p>MEAN Stack Client Side Bypass Demo</p>'
+    };
 
     $rootScope.$on('$viewContentLoaded', function () {
         $scope.getAdmin();
@@ -13,7 +15,7 @@ angular.module('MainCtrl', ['ngCookies']).controller('MainController', ['$scope'
         $cookieStore.remove('id');
         $scope.getAdmin();
         $scope.isLoggedin = false;
-        $location.path('/');
+        $location
 
     };
 
@@ -73,30 +75,12 @@ angular.module('MainCtrl', ['ngCookies']).controller('MainController', ['$scope'
                     console.log('Something Went Wrong ' + data);
                     $scope.isAdmin = false;
                 });
-
         }
 
     };
 
-    $scope.updateMainContent = function () {
-        $http.post("/api/updateContent", {'htmlContent': $scope.htmlContent})
-            .success(function (data) {
-                debugger;
-            })
-            .error(function (data) {
-                debugger;
-            });
+    $scope.updateContent = function () {
+        window.htmlContent = $scope.model.htmlContent;
+        $location.path('/');
     };
-
-    $scope.getMainContent = function () {
-        $http.post("/api/getContent", {'page': 'home'})
-            .success(function (data) {
-                debugger;
-            })
-            .error(function (data) {
-                debugger;
-            });
-    };
-    $scope.getMainContent();
-
 }]);

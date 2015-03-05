@@ -1,11 +1,8 @@
 <div class="jumbotron">
-    <div class="pull-right">
-        <button ng-click="updateMainContent();">Update Changes</button>
-    </div>
+    <div text-angular ng-model="model.htmlContent"></div>
 
-    <div text-angular ng-model="htmlContent"></div>
-
+    <br>
     <div class="pull-right">
-        <button ng-click="updateMainContent();">Update Changes</button>
+        <button ng-click="updateContent()" class="btn btn-primary">Update Changes</button>
     </div>
 </div>
